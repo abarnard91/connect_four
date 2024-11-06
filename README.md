@@ -9,8 +9,8 @@ rules:
 
 to do:
 - make gameboard class
-    - build a blank board thats 7x6 grid
-    - have numbers underneath for readability
+    - build a blank board thats 7x6 grid- DONE
+    - have numbers underneath for readability- DONE
     - on player/computer input drop disc
     - update image after each move
 
