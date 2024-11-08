@@ -18,7 +18,9 @@ to do:
 - make player class 
     - create method that drops a disc on an input of number 1-7
     - create method that increases win count on upon winning
-
+    - create a method that tracks where chips are dropped
+    - create a method that determines if there are 4 vertical, horizontal,
+    or diagonal chips in a row to win
 - make computer class
     - create a method that randomly chooses where to place disc
     -create method that increases win count upon winning
