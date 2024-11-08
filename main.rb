@@ -2,12 +2,12 @@ require_relative("lib/board.rb")
 
 game_board = Board.new()
 
-puts game_board.board
+game_board.empty_board
+#puts game_board.board
 
-game_board.add_chip(3)
+game_board.drop_chip(3)
 
-puts game_board.board
+puts"HI!", game_board.board
 
-Board.empty_board
-
-puts game_board.board
+#game_board.empty_board
+#puts game_board.board
