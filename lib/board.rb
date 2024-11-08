@@ -39,7 +39,6 @@ class Board
       if spot[x] == "_"
         spot[x] = @w
         return spot[x]
-        break
       end
     end
   end
