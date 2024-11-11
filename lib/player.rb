@@ -7,13 +7,13 @@ class Player
   end
 
   def player_move()
-    move = nil
-    until move == 1..7 do
-      puts "enter where you would like to drop your chip"
-      puts "enter 1-7 only"
-      move = gets.chomp 
+    move = 9999
+    until move.between?(0,8)
+      puts "Enter where you would like to drop your chip?"
+      puts "Enter 1-7 only!"
+      move = gets.chomp.to_i
     end
-    Board.drop_chip(move, @chip)
+    return move
     
   end
 
