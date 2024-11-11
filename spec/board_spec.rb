@@ -9,12 +9,12 @@ describe Board do
       board.empty_board
       expect(board.board).to eql(
         ["|___|___|___|___|___|___|___|",
-        "|___|___|___|___|___|___|___|",
-        "|___|___|___|___|___|___|___|",
-        "|___|___|___|___|___|___|___|",
-        "|___|___|___|___|___|___|___|",
-        "|___|___|___|___|___|___|___|",
-        "  1   2   3   4   5   6   7  "])
+         "|___|___|___|___|___|___|___|",
+         "|___|___|___|___|___|___|___|",
+         "|___|___|___|___|___|___|___|",
+         "|___|___|___|___|___|___|___|",
+         "|___|___|___|___|___|___|___|",
+         "  1   2   3   4   5   6   7  "])
 
       expect(board.r1).to eql("|___|___|___|___|___|___|___|")
     end
@@ -53,19 +53,19 @@ describe Board do
 
     end
 
-    xit "stores the move as a hash in the @moves array" do
+    it "stores the move as a hash in the @moves hash" do
       
       board = Board.new
       player = Player.new
       computer = Computer.new
       board.empty_board
-      board.drop_chip(3,player.chip)
-      board.drop_chip(3,computer.chip)
+      board.drop_chip(3, player.chip)
+      board.drop_chip(3, computer.chip)
       def num_to_spot(num)
         return num*4-2
       end
       
-      expect(board.moves).to eql({board.r1[10] => player.chip, board.r2[10] => computer.chip})
+      expect(board.moves).to eql({R1_3: player.chip, R2_3: computer.chip})
     end
 
   end

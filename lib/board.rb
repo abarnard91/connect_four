@@ -3,7 +3,7 @@ class Board
 
   def initialize
     @board = nil
-    #@moves = Hash.new()
+    @moves = Hash.new()
   
   end
   
@@ -21,10 +21,11 @@ class Board
 
   def drop_chip(drop_spot, chip)
     x = ((drop_spot*4)-2) #converts column number (1-7) to array position
-    @board.reverse.each do |spot|
+    @board.reverse.each_with_index do |spot, i|
       if spot[x] == "_"
         spot[x] = chip
-        
+        grid_spot = ("R" + i.to_s + "_" + drop_spot.to_s).to_sym
+        @moves[grid_spot] = chip
         return spot[x], @moves
       end
     end
