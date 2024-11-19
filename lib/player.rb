@@ -8,7 +8,7 @@ class Player
 
   def player_move()
     move = 9999
-    until move.between?(0,8)
+    until move.between?(1,7)
       puts "Enter where you would like to drop your chip?"
       puts "Enter 1-7 only!"
       move = gets.chomp.to_i

@@ -8,12 +8,11 @@ computer = Computer.new
 
 game_board.empty_board
 #puts game_board.board
+2.times do
+  game_board.drop_chip(player.player_move,player.chip)
+  game_board.drop_chip(computer.computer_move,computer.chip)
 
-game_board.drop_chip(player.player_move,player.chip)
-game_board.drop_chip(3,computer.chip)
-
-puts game_board.board
-
-
+  puts game_board.board
+end
 #game_board.empty_board
 #puts game_board.board

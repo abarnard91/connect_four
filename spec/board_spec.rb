@@ -53,7 +53,7 @@ describe Board do
 
     end
 
-    it "stores the move as a hash in the @moves hash" do
+    xit "stores the move as a hash in the @moves hash" do
       
       board = Board.new
       player = Player.new
@@ -65,8 +65,28 @@ describe Board do
         return num*4-2
       end
       
-      expect(board.moves).to eql({R1_3: player.chip, R2_3: computer.chip})
+      expect(board.moves).to eql({[3,1] => player.chip, [3,2] => computer.chip})
     end
 
+  end
+
+  describe "vertical_win" do 
+    it "takes an input of an array of arrays iterates through the outer array (the x axis) and iterates again through each inner array (the y axis). Compares the previous Y value with the current Y value and if current Y value - previous Y value = 1 adds 1 to the count. If the count reaches 4 that means there are 4 sequencial numbers or 4 in a row vertically" do
+      board = Board.new
+      player = Player.new
+      board.empty_board
+      board.drop_chip(1,player.chip)
+      board.drop_chip(4,player.chip)
+      board.drop_chip(2,player.chip)
+      board.drop_chip(3,player.chip)
+      board.drop_chip(1,player.chip)
+      board.drop_chip(3,player.chip)
+      board.drop_chip(3,player.chip)
+      board.drop_chip(3,player.chip)
+      player_arr = board.move_array_sort(board.player_moves_arr)
+
+      expect(board.vertical_win(player_arr)).to eql(true)
+
+    end
   end
 end

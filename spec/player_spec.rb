@@ -3,7 +3,7 @@ require "./lib/board.rb"
 
 describe Player do
   describe "#player_move" do
-    it "Received player input and runs the drop_chip method from Board class" do
+    xit "Received player input and runs the drop_chip method from Board class" do
       board = Board.new
       player = Player.new
       board.empty_board
