@@ -53,7 +53,7 @@ describe Board do
 
     end
 
-    xit "stores the move as a hash in the @moves hash" do
+    it "stores the move as an array in either @player_moves_arr or @computer_moves_arr" do
       
       board = Board.new
       player = Player.new
@@ -61,11 +61,14 @@ describe Board do
       board.empty_board
       board.drop_chip(3, player.chip)
       board.drop_chip(3, computer.chip)
+      board.drop_chip(6, player.chip)
+      board.drop_chip(7, computer.chip)
       def num_to_spot(num)
         return num*4-2
       end
       
-      expect(board.moves).to eql({[3,1] => player.chip, [3,2] => computer.chip})
+      expect(board.player_moves_arr).to eql([[3,1], [6,1]])
+      expect(board.computer_moves_arr).to eql([[3,2],[7,1]])
     end
 
   end
@@ -83,9 +86,9 @@ describe Board do
       board.drop_chip(3,player.chip)
       board.drop_chip(3,player.chip)
       board.drop_chip(3,player.chip)
-      player_arr = board.move_array_sort(board.player_moves_arr)
+      
 
-      expect(board.vertical_win(player_arr)).to eql(true)
+      expect(board.vertical_win(board.player_moves_arr)).to eql(true)
 
     end
   end

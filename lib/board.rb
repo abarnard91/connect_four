@@ -34,8 +34,8 @@ class Board
       end
     end
   end
-
-  def move_array_sort(arr)
+ 
+  def vertical_win (arr)
     arr.sort!
     pm1 = []
     pm2 = []
@@ -57,16 +57,13 @@ class Board
       end
     end
     arr_of_arr = [pm1, pm2, pm3, pm4, pm5, pm6, pm7]
-    #arr_of_arr
-  end
-  def vertical_win (arr)
+
     count = 0
     
-    arr.each do |x_axis|
+    arr_of_arr.each do |x_axis|
       #puts "x_axis is #{x_axis}"
-      pyv = 0
+      pyv = 0 #previous y value
       x_axis.each do |y_axis| 
-         #previous y value
         #puts "y_axis is #{y_axis} and pyv is #{pyv}"
         if (y_axis - pyv) == 1
           count += 1
@@ -77,13 +74,17 @@ class Board
         if count == 4 
           break
         end
-        puts "count is #{count}"
+        #puts "count is #{count}"
       end
 
       if count == 4
         return true
       end
     end
+  end
+
+  def horizontal_win(arr)
+    
   end
   
 end
