@@ -1,10 +1,12 @@
 class Board
-  attr_accessor :board, :r1, :r2, :r3, :r4, :r5, :r6, :player_moves_arr, :computer_moves_arr
+  attr_accessor :board, :winner, :player_moves_arr, :computer_moves_arr
+  attr_reader :r1, :r2, :r3, :r4, :r5, :r6
 
   def initialize
     @board = nil
     @player_moves_arr = []
     @computer_moves_arr = []
+    @winner = false
   
   end
   
@@ -37,26 +39,26 @@ class Board
  
   def vertical_win (arr)
     arr.sort!
-    pm1 = []
-    pm2 = []
-    pm3 = []
-    pm4 = []
-    pm5 = []
-    pm6 = []
-    pm7 = []
+    x_1 = [] # x axis
+    x_2 = []
+    x_3 = []
+    x_4 = []
+    x_5 = []
+    x_6 = []
+    x_7 = []
 
     arr.each do |move_arr|
       case move_arr[0]
-      when 1 then pm1 << move_arr[1]
-      when 2 then pm2 << move_arr[1]
-      when 3 then pm3 << move_arr[1]
-      when 4 then pm4 << move_arr[1]
-      when 5 then pm5 << move_arr[1]
-      when 6 then pm6 << move_arr[1]
-      when 7 then pm7 << move_arr[1]       
+      when 1 then x_1 << move_arr[1]
+      when 2 then x_2 << move_arr[1]
+      when 3 then x_3 << move_arr[1]
+      when 4 then x_4 << move_arr[1]
+      when 5 then x_5 << move_arr[1]
+      when 6 then x_6 << move_arr[1]
+      when 7 then x_7 << move_arr[1]       
       end
     end
-    arr_of_arr = [pm1, pm2, pm3, pm4, pm5, pm6, pm7]
+    arr_of_arr = [x_1, x_2, x_3, x_4, x_5, x_6, x_7]
 
     count = 0
     
@@ -78,13 +80,42 @@ class Board
       end
 
       if count == 4
-        return true
+        return @winner = true
       end
     end
   end
 
   def horizontal_win(arr)
-    
+    arr.sort!
+    #puts "arr is #{arr}"
+    y_1 = [] #y_axis
+    y_2 = []
+    y_3 = []
+    y_4 = []
+    y_5 = []
+    y_6 = []
+
+    arr.each do |move_arr|
+      case move_arr[1]
+      when 1 then y_1 << move_arr[0]
+      when 2 then y_2 << move_arr[0]
+      when 3 then y_3 << move_arr[0]
+      when 4 then y_4 << move_arr[0]
+      when 5 then y_5 << move_arr[0]
+      when 6 then y_6 << move_arr[0]     
+      end
+    end
+    arr_of_arr = [y_1, y_2, y_3, y_4, y_5, y_6]
+    #puts "arr of arr is #{arr_of_arr}"
+    arr_of_arr.each do |y_axis|
+      case y_axis
+      in [1,2,3,4,*] | [*,2,3,4,5,*] | [*,3,4,5,6]
+        return @winner = true
+      else
+        
+      end
+    end
+    "No winner yet"
   end
   
 end

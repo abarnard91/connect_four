@@ -88,7 +88,30 @@ describe Board do
       board.drop_chip(3,player.chip)
       
 
-      expect(board.vertical_win(board.player_moves_arr)).to eql(true)
+      expect(board.vertical_win(board.player_moves_arr)).to eql(board.winner = true)
+
+    end
+  end
+
+  describe "horizontal_win" do 
+    it "taxes an input of player or move array of x,y coordinates and sorts them into an array of arrays by the y axis containing each x axis then sees if there are 4 of the same number in any of the y axis arrays" do 
+      board = Board.new
+      player = Player.new
+      comp = Computer.new
+      board.empty_board
+      board.drop_chip(1,player.chip)
+      board.drop_chip(4,player.chip)
+      board.drop_chip(5,player.chip)
+      board.drop_chip(3,player.chip)
+      board.drop_chip(6,player.chip)
+      board.drop_chip(3,player.chip)
+      4.times {board.drop_chip(comp.computer_move, comp.chip)}
+
+      board.horizontal_win(board.computer_moves_arr)
+      expect(board.winner).to eql(false)
+
+      expect(board.horizontal_win(board.player_moves_arr)).to eql(board.winner = true)
+      
 
     end
   end
