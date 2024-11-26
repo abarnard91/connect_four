@@ -35,6 +35,7 @@ class Board
         return spot[x]
       end
     end
+    puts "No space for chip!!!!"
   end
  
   def vertical_win (arr)
