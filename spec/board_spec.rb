@@ -94,7 +94,7 @@ describe Board do
   end
 
   describe "horizontal_win" do 
-    it "taxes an input of player or move array of x,y coordinates and sorts them into an array of arrays by the y axis containing each x axis then sees if there are 4 of the same number in any of the y axis arrays" do 
+    it "takes an input of player or move array of x,y coordinates and sorts them into an array of arrays by the y axis containing each x axis then sees if there are 4 of the same number in any of the y axis arrays" do 
       board = Board.new
       player = Player.new
       comp = Computer.new
@@ -115,4 +115,50 @@ describe Board do
 
     end
   end
+  describe "diagonal win" do
+    it "sorts the array of moves and checks if there is an incremental move of x+1,y+1 or x+1,y-1 through [x+4,y+4] or [x+4,y-4]" do
+      game_board = Board.new
+      player = Player.new
+      computer = Computer.new
+
+      game_board.empty_board
+      game_board.drop_chip(1, computer.chip)
+      game_board.drop_chip(1, player.chip)
+      game_board.drop_chip(2, computer.chip)
+      game_board.drop_chip(2, player.chip)
+
+      game_board.drop_chip(3, computer.chip)
+      game_board.drop_chip(4, player.chip)
+      game_board.drop_chip(4, computer.chip)
+      game_board.drop_chip(3, player.chip)
+
+
+      game_board.drop_chip(4, computer.chip)
+      game_board.drop_chip(3, player.chip)
+      game_board.drop_chip(2, computer.chip)
+
+      game_board.drop_chip(7, computer.chip)
+      game_board.drop_chip(5, player.chip)
+      game_board.drop_chip(6, computer.chip)
+      game_board.drop_chip(6, player.chip)
+
+      game_board.drop_chip(5, computer.chip)
+      game_board.drop_chip(7, player.chip)
+      game_board.drop_chip(1, computer.chip)
+      game_board.drop_chip(4, player.chip)
+      game_board.drop_chip(5, computer.chip)
+      game_board.drop_chip(5, player.chip)
+      game_board.drop_chip(3, computer.chip)
+      game_board.drop_chip(5, player.chip)
+      game_board.diagonal_win(game_board.player_moves_arr)
+
+      expect(game_board.winner).to eql(true)
+
+      game_board.winner = true
+      game_board.diagonal_win(game_board.computer_moves_arr)
+      
+      expect(game_board.winner).to eql(true)
+    end
+  end
+
 end

@@ -117,5 +117,47 @@ class Board
     end
     "No winner yet"
   end
+
+  def diagonal_win(arr)
+    arr.sort!
+    puts "arr is #{arr}"
+    #prev_coor = []
+    i = 0
+    count = 0
+    arr.each do |coor|
+      puts "coor is #{coor}"
+      4.times do
+        if arr.any?{|xy| xy == [(coor[0]+i),(coor[1]+i)]}
+          puts "yes"
+
+          count += 1 
+          i += 1
+        else
+          puts "no"
+          i = 0
+          count = 0
+          break
+        end
+      end
+      if count >= 4
+        return @winner = true
+      else
+        4.times do 
+          if arr.any?{|xy| xy == [(coor[0]+i),(coor[1]-i)]}
+            count += 1 
+            i += 1
+          else
+            i = 0
+            count = 0
+            break
+          end
+        end
+      end
+      if count >= 4
+        return @winner = true
+      end
+    end
+  end
   
+
 end
