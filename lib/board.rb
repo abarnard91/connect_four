@@ -1,5 +1,5 @@
 class Board
-  attr_accessor :board, :winner, :player_moves_arr, :computer_moves_arr
+  attr_accessor :board, :winner, :player_moves_arr, :computer_moves_arr, :complete_move
   attr_reader :r1, :r2, :r3, :r4, :r5, :r6
 
   def initialize
@@ -7,6 +7,7 @@ class Board
     @player_moves_arr = []
     @computer_moves_arr = []
     @winner = false
+    @complete_move = false
   
   end
   
@@ -32,10 +33,14 @@ class Board
         else 
           @computer_moves_arr << [drop_spot, i]
         end
-        return spot[x]
+        #puts "complete_move is true!"
+        @complete_move = true
+        return @complete_move
+        puts "you shouldn\'t see me"
       end
     end
-    puts "No space for chip!!!!"
+    @complete_move = false
+    puts "No space for the chip!!!!"
   end
  
   def vertical_win (arr)
@@ -121,20 +126,20 @@ class Board
 
   def diagonal_win(arr)
     arr.sort!
-    puts "arr is #{arr}"
+    #puts "arr is #{arr}"
     #prev_coor = []
     i = 0
     count = 0
     arr.each do |coor|
-      puts "coor is #{coor}"
+      #puts "coor is #{coor}"
       4.times do
         if arr.any?{|xy| xy == [(coor[0]+i),(coor[1]+i)]}
-          puts "yes"
+          #puts "yes"
 
           count += 1 
           i += 1
         else
-          puts "no"
+          #puts "no"
           i = 0
           count = 0
           break
@@ -160,5 +165,10 @@ class Board
     end
   end
   
+  def check_for_win(arr)
+    horizontal_win(arr)
+    vertical_win(arr)
+    diagonal_win(arr)
+  end
 
 end
