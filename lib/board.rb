@@ -45,9 +45,20 @@ class Board
     puts "No space for the chip!!!!"
   end
  
+#### example for using json to save game  ####
+  # def to_json #method for saving player data to json file if quitting
+  #   File.write('game_save.json',JSON.dump({
+  #     :score => @score,
+  #     :letter_guessed => @letter_guessed,
+  #     :guess_array=> @guess_array
+  #   }))
+  # end
 
-
-  
+  # def self.from_json(player_save) #for loading json data from previous save to instance of HumanPlayer class
+  #   save_file = File.read(player_save)
+  #   data = JSON.parse(save_file) 
+  #   self.new(data['score'],data['letter_guessed'],data['guess_array'])
+  # end
 
   
   

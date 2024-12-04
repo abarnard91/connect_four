@@ -16,7 +16,10 @@ to do:
     - create a method that determines if there are 4 vertical, horizontal,
     or diagonal chips in a row to win -DONE
     - create a method that tracks where chips are dropped -DONE
-     - update move method to account for if the move is out of bounds (i.e. if a column is full)
+     - update move method to account for if the move is out of bounds (i.e. if a column is full) -DONE
+    - create a method that can save the game (see the method in code breaker for example)
+    - create a method for starting a new game
+        - provide options for loading previous save or start from scratch
 
 
 - make player class 
