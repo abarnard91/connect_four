@@ -6,7 +6,7 @@ game_board = Board.new
 player = Player.new
 computer = Computer.new
 
-game_board.empty_board
+#game_board.empty_board
 while game_board.winner == false
   game_board.complete_move = false
   while game_board.complete_move == false
@@ -15,6 +15,9 @@ while game_board.winner == false
     game_board.check_for_win(game_board.player_moves_arr)
   end
   puts game_board.board
+  if game_board.winner == true
+    break
+  end
   game_board.complete_move = false
   while game_board.complete_move == false
     game_board.drop_chip(computer.computer_move, computer.chip)
