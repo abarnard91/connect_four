@@ -33,6 +33,10 @@ class Board
   # end
 
   def drop_chip(drop_spot, chip)
+    if drop_spot == 8 
+      @winner = true
+      return @complete_move = true
+    end
     x = ((drop_spot*4)-2) #converts column number (1-7) to array position
     @board.reverse.each_with_index do |spot, i|
       if spot[x] == "_"
