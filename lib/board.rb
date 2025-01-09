@@ -19,21 +19,9 @@ class Board
     @board = [@r6, @r5, @r4, @r3, @r2, @r1, @r0]
   
   end
-  
-  # def empty_board  
-  #   @r6 = "|___|___|___|___|___|___|___|"
-  #   @r5 = "|___|___|___|___|___|___|___|"
-  #   @r4 = "|___|___|___|___|___|___|___|"
-  #   @r3 = "|___|___|___|___|___|___|___|"
-  #   @r2 = "|___|___|___|___|___|___|___|"
-  #   @r1 = "|___|___|___|___|___|___|___|"
-  #   @r0 = "  1   2   3   4   5   6   7  " 
-  #   @board = [@r6, @r5, @r4, @r3, @r2, @r1, @r0]
-  #   #1:R#[2], 2:R#[6], 3:R#[10], 4:R#[14], 5:R#[18], 6:R#[22], 7:R#[26]
-  # end
 
   def drop_chip(drop_spot, chip)
-    if drop_spot == 8 
+    if drop_spot == 8 #only possible by choosing to quick in the player start menu
       @winner = true
       return @complete_move = true
     end
@@ -102,6 +90,7 @@ class Board
 
   def check_for_win(arr)
    if horizontal_win(arr) == true || vertical_win(arr) == true || diagonal_win(arr)
+    puts "#{arr} is WINNER"
     return @winner = true 
    end
   end

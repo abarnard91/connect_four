@@ -1,7 +1,7 @@
 module Win_moves
 
   def vertical_win (arr)
-    arr.sort!
+    #arr.sort!
     x_1 = [] # x axis
     x_2 = []
     x_3 = []
@@ -22,6 +22,7 @@ module Win_moves
       end
     end
     arr_of_arr = [x_1, x_2, x_3, x_4, x_5, x_6, x_7]
+    #puts "vertical arr_of_arr is #{arr_of_arr}" #for debugging
 
     count = 0
     
@@ -29,7 +30,7 @@ module Win_moves
       #puts "x_axis is #{x_axis}"
       pyv = 0 #previous y value
       x_axis.each do |y_axis| 
-        #puts "y_axis is #{y_axis} and pyv is #{pyv}"
+        #puts "y_axis is #{y_axis} and pyv is #{pyv}" #for debugging
         if (y_axis - pyv) == 1
           count += 1
         else 
@@ -39,12 +40,14 @@ module Win_moves
         if count == 4 
           break
         end
-        #puts "count is #{count}"
+        puts "count is #{count}"
       end
 
       if count == 4
+        #puts "vertical WIN"
         return  true
       end
+      count = 0
     end
     return false
   end
@@ -70,11 +73,21 @@ module Win_moves
       end
     end
     arr_of_arr = [y_1, y_2, y_3, y_4, y_5, y_6]
-    #puts "arr of arr is #{arr_of_arr}"
+    puts "horizontal arr of arr is #{arr_of_arr}"
     arr_of_arr.each do |y_axis|
       case y_axis
-      in [1,2,3,4,*] | [*,2,3,4,5,*] | [*,3,4,5,6]
-        return  true
+      in [1,2,3,4,*]
+        puts "horizontal win"
+        return true
+      in [*,2,3,4,5,*]
+        puts "horizontal win"
+        return true
+      in [*,3,4,5,6,*]
+        puts "horizontal win"
+        return true
+      in [*,4,5,6,7]
+        puts "horizontal win"
+        return true
       else
         
       end
@@ -118,6 +131,7 @@ module Win_moves
         end
       end
       if count >= 4
+        puts "diagonal WIN!"
         return true
       end
     end

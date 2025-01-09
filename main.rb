@@ -1,3 +1,4 @@
+require "json"
 require_relative "lib/board.rb"
 require_relative 'lib/player.rb'
 require_relative "lib/computer.rb"
@@ -12,6 +13,14 @@ while game_board.winner == false
   while game_board.complete_move == false
     game_board.drop_chip(player.player_move, player.chip)
     #puts game_board.complete_move
+    if player.saq == true
+      game_board.to_json
+      player.to_json()
+      game_board.complete_move = true
+      game_board.winner = true
+      break
+    end
+    puts "player check for win"
     game_board.check_for_win(game_board.player_moves_arr)
   end
   puts game_board.board
@@ -24,6 +33,7 @@ while game_board.winner == false
    # puts game_board.complete_move
   end
   puts game_board.board
+  puts "computer check for win"
   game_board.check_for_win(game_board.computer_moves_arr)
 end
 
