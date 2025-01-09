@@ -40,7 +40,7 @@ module Win_moves
         if count == 4 
           break
         end
-        puts "count is #{count}"
+        #puts "count is #{count}" #for debugging
       end
 
       if count == 4
@@ -73,19 +73,10 @@ module Win_moves
       end
     end
     arr_of_arr = [y_1, y_2, y_3, y_4, y_5, y_6]
-    puts "horizontal arr of arr is #{arr_of_arr}"
+    #puts "horizontal arr of arr is #{arr_of_arr}"  #for debugging
     arr_of_arr.each do |y_axis|
       case y_axis
-      in [1,2,3,4,*]
-        puts "horizontal win"
-        return true
-      in [*,2,3,4,5,*]
-        puts "horizontal win"
-        return true
-      in [*,3,4,5,6,*]
-        puts "horizontal win"
-        return true
-      in [*,4,5,6,7]
+      in [1,2,3,4,*] | [*,2,3,4,5,*] | [*,3,4,5,6,*] | [*,4,5,6,7]
         puts "horizontal win"
         return true
       else
@@ -117,6 +108,7 @@ module Win_moves
         end
       end
       if count >= 4
+        puts "diagonal WIN!"
         return true
       else
         4.times do 

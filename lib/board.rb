@@ -89,8 +89,8 @@ class Board
   end
 
   def check_for_win(arr)
-   if horizontal_win(arr) == true || vertical_win(arr) == true || diagonal_win(arr)
-    puts "#{arr} is WINNER"
+   if horizontal_win(arr) == true || vertical_win(arr) == true || diagonal_win(arr) == true
+    #puts "#{arr} is WINNER" #for debugging
     return @winner = true 
    end
   end
