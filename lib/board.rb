@@ -1,7 +1,7 @@
 require_relative "win_moves.rb"
 class Board
   include Win_moves
-  attr_accessor :board, :winner, :player_moves_arr, :computer_moves_arr, :complete_move, :r1, :r2, :r3, :r4, :r5, :r6
+  attr_accessor :board, :winner, :player_moves_arr, :computer_moves_arr, :complete_move,:r0, :r1, :r2, :r3, :r4, :r5, :r6
 
   def initialize
    #@board = nil
@@ -43,21 +43,6 @@ class Board
     @complete_move = false
     puts "No space for the chip!!!!"
   end
- 
-#### example for using json to save game  ####
-  # def to_json #method for saving player data to json file if quitting
-  #   File.write('game_save.json',JSON.dump({
-  #     :score => @score,
-  #     :letter_guessed => @letter_guessed,
-  #     :guess_array=> @guess_array
-  #   }))
-  # end
-
-  # def self.from_json(player_save) #for loading json data from previous save to instance of HumanPlayer class
-  #   save_file = File.read(player_save)
-  #   data = JSON.parse(save_file) 
-  #   self.new(data['score'],data['letter_guessed'],data['guess_array'])
-  # end
 
   def to_json 
     File.write('game_save.json',JSON.dump({
@@ -79,13 +64,13 @@ class Board
     save_file = File.read(save)
     data = JSON.parse(save_file)
     self.new()
-    self.r0 = data['r0']
-    self.r1 = data['r1']
-    self.r2 = data['r2']
-    self.r3 = data['r3']
-    self.r4 = data['r4']
-    self.r5 = data['r5']
-    self.r6 = data['r6']
+    @r0 = data['r0']
+    @r1 = data['r1']
+    @r2 = data['r2']
+    @r3 = data['r3']
+    @r4 = data['r4']
+    @r5 = data['r5']
+    @r6 = data['r6']
   end
 
   def check_for_win(arr)
@@ -95,4 +80,24 @@ class Board
    end
   end
 
+  def play_again(player, computer)
+  
+    puts "Would you like to play again? \n1. yes \n2. no \n(Enter only 1 or 2)"
+    player_response = gets.chomp
+  
+    until player_response.to_i.between?(1,2)
+      puts "Please only enter 1 or 2. Thank you!"
+      player_response = gets.chomp
+    end
+  
+    if player_response.to_i == 1 
+      return true
+    else
+      puts "Thanks for playing!"
+      puts "Final scores: You: #{player.score} computer: #{computer.score}"
+      return false
+    end
+  
+  end
+  
 end

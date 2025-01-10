@@ -1,5 +1,5 @@
 class Computer
-  attr_accessor :chip
+  attr_accessor :chip, :score
   def initialize
     @score = 0
     @winner = false
@@ -9,6 +9,18 @@ class Computer
   def computer_move
     move = rand(1..7)
     return move
+  end
+
+  def to_json
+    File.write("computer_save.json", JSON.dump({:score => @score}))
+  end
+
+  def self.from_json(save)
+    save_file = File.read(save)
+    data = JSON.parse(save_file)
+    self.new()
+    @score = data['score']
+
   end
 
 end

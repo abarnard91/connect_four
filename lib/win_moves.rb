@@ -24,30 +24,18 @@ module Win_moves
     arr_of_arr = [x_1, x_2, x_3, x_4, x_5, x_6, x_7]
     #puts "vertical arr_of_arr is #{arr_of_arr}" #for debugging
 
-    count = 0
-    
+    #count = 0
+    #pyv = 0 #previous y value
     arr_of_arr.each do |x_axis|
-      #puts "x_axis is #{x_axis}"
-      pyv = 0 #previous y value
-      x_axis.each do |y_axis| 
-        #puts "y_axis is #{y_axis} and pyv is #{pyv}" #for debugging
-        if (y_axis - pyv) == 1
-          count += 1
-        else 
-        count = 0
-        end
-        pyv = y_axis
-        if count == 4 
-          break
-        end
-        #puts "count is #{count}" #for debugging
-      end
+      puts "x_axis is #{x_axis}"
 
-      if count == 4
-        #puts "vertical WIN"
-        return  true
+      case x_axis
+      in [1,2,3,4,*] | [*,2,3,4,5,*] | [*,3,4,5,6] 
+        puts "vertical win"
+        return true
+      else
+        
       end
-      count = 0
     end
     return false
   end

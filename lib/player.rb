@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :chip, :saq
+  attr_accessor :chip, :saq, :score
     
   def initialize
     @score = 0
@@ -14,7 +14,7 @@ class Player
       puts "Enter where you would like to drop your chip?"
       puts "Enter 1-7 only!"
       move = gets.chomp
-      puts "move is #{move} "
+      #puts "move is #{move} "
       unless move == "start"
         move = move.to_i
         puts "move is an integer #{move.is_a?(Integer)} #{move}"
@@ -33,7 +33,7 @@ class Player
     puts "Welcome to the start menu"
     puts "-Enter 1 to resume game\n-Enter 2 to save and quit\n-Enter 3 start a new game\n-Enter 4 to quit"
     response = gets.chomp.to_i
-    puts "you picked #{response} well too bad we\'re quitting sucka!"
+    #puts "you picked #{response} well too bad we\'re quitting sucka!"
     case response
     when 1 then player_move()
     when 2 then return @saq = true
@@ -46,11 +46,11 @@ class Player
     File.write("player_save.json", JSON.dump({:score => @score}))
   end
 
-  def self.from_json
+  def self.from_json(save)
     save_file = File.read(save)
     data = JSON.parse(save_file)
     self.new()
-    self.score = data['score']
+    @score = data['score']
 
   end
 
