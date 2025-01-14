@@ -3,19 +3,30 @@ class Board
   include Win_moves
   attr_accessor :board, :winner, :player_moves_arr, :computer_moves_arr, :complete_move,:r0, :r1, :r2, :r3, :r4, :r5, :r6
 
-  def initialize
+  def initialize(
+   r0 = "  1   2   3   4   5   6   7  ",
+   r1 = "|___|___|___|___|___|___|___|",
+   r2 = "|___|___|___|___|___|___|___|",
+   r3 = "|___|___|___|___|___|___|___|",
+   r4 = "|___|___|___|___|___|___|___|",
+   r5 = "|___|___|___|___|___|___|___|",
+   r6 = "|___|___|___|___|___|___|___|",
+   winner = false,
+   computer_moves_arr = [],
+   player_moves_arr = []
+  )
    #@board = nil
-    @player_moves_arr = []
-    @computer_moves_arr = []
-    @winner = false
+    @player_moves_arr = player_moves_arr
+    @computer_moves_arr = computer_moves_arr
+    @winner = winner
     @complete_move = false
-    @r6 = "|___|___|___|___|___|___|___|"
-    @r5 = "|___|___|___|___|___|___|___|"
-    @r4 = "|___|___|___|___|___|___|___|"
-    @r3 = "|___|___|___|___|___|___|___|"
-    @r2 = "|___|___|___|___|___|___|___|"
-    @r1 = "|___|___|___|___|___|___|___|"
-    @r0 = "  1   2   3   4   5   6   7  " 
+    @r6 = r6
+    @r5 = r5
+    @r4 = r4
+    @r3 = r3
+    @r2 = r2
+    @r1 = r1
+    @r0 = r0
     @board = [@r6, @r5, @r4, @r3, @r2, @r1, @r0]
   
   end
@@ -46,7 +57,6 @@ class Board
 
   def to_json 
     File.write('game_save.json',JSON.dump({
-      :board => @board,
       :r0 => @r0,
       :r1 => @r1,
       :r2 => @r2,
@@ -63,14 +73,17 @@ class Board
   def self.from_json(save)
     save_file = File.read(save)
     data = JSON.parse(save_file)
-    self.new()
-    @r0 = data['r0']
-    @r1 = data['r1']
-    @r2 = data['r2']
-    @r3 = data['r3']
-    @r4 = data['r4']
-    @r5 = data['r5']
-    @r6 = data['r6']
+    self.new(data['r0'], data['r1'], data['r2'], data['r3'], data['r4'], data['r5'], data['r6'], data['winner'], data['computer_moves_arr'], data['player_moves_arr'])
+    # @r0 = 
+    # #@r1 = data['r1']
+    # @r2 = data['r2']
+    # @r3 = 
+    # @r4 = data['r4']
+    # @r5 = data['r5']
+    # @r6 = data['r6']
+    # #@winner = data['winner']
+    # @player_moves_arr = data['player_moves_arr']
+    # @computer_moves_arr = data['computer_moves_arr']
   end
 
   def check_for_win(arr)

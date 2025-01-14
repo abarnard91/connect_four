@@ -27,8 +27,10 @@ if start_game_response.to_i == 1
   player = Player.new
   computer = Computer.new
 else
+  game_board = Board.new
+  puts game_board.r1
   game_board = Board.from_json('game_save.json')
-  puts game_board.winner
+  puts game_board.r1
   player = Player.from_json("player_save.json")
   computer = Computer.from_json("computer_save.json") 
 end

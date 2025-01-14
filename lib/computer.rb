@@ -1,7 +1,7 @@
 class Computer
   attr_accessor :chip, :score
-  def initialize
-    @score = 0
+  def initialize(score = 0)
+    @score = score
     @winner = false
     @chip = "\u263B" #black chip
   end
@@ -18,9 +18,7 @@ class Computer
   def self.from_json(save)
     save_file = File.read(save)
     data = JSON.parse(save_file)
-    self.new()
-    @score = data['score']
-
+    self.new(data['score'])
   end
 
 end

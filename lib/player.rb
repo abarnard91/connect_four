@@ -1,8 +1,8 @@
 class Player
   attr_accessor :chip, :saq, :score
     
-  def initialize
-    @score = 0
+  def initialize (score = 0)
+    @score = score
     @winner = false
     @chip = "\u263A" #white chip
     @saq = false #save and quit
@@ -49,9 +49,7 @@ class Player
   def self.from_json(save)
     save_file = File.read(save)
     data = JSON.parse(save_file)
-    self.new()
-    @score = data['score']
-
+    self.new( data['score'])
   end
 
 end
