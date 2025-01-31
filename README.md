@@ -17,17 +17,17 @@ to do:
     or diagonal chips in a row to win -DONE
     - create a method that tracks where chips are dropped -DONE
      - update move method to account for if the move is out of bounds (i.e. if a column is full) -DONE
-    - create a method that can save the game (see the method in code breaker for example)
+    - create a method that can save the game (see the method in code breaker for example) - DONE
     - create a method for starting a new game
-        - provide options for loading previous save or start from scratch
+        - provide options for loading previous save or start from scratch -the loading game part done working on starting a new game from scratch
 
 
 - make player class 
     - create method that drops a disc on an input of number 1-7 -DONE
-    - create method that increases win count on upon winning
+    - create method that increases win count on upon winning -DONE (not a method just part of the game loop)
     
     
     
 - make computer class
     - create a method that randomly chooses where to place disc -DONE
-    - create method that increases win count upon winning
+    - create method that increases win count upon winning -DONE

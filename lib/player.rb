@@ -1,11 +1,13 @@
 class Player
-  attr_accessor :chip, :saq, :score
+  attr_accessor :chip, :saq, :score, :reset, :quit
     
   def initialize (score = 0)
     @score = score
     @winner = false
     @chip = "\u263A" #white chip
+    @reset = false
     @saq = false #save and quit
+    @quit = false #quit without saving of course
   end
 
   def player_move()
@@ -37,8 +39,8 @@ class Player
     case response
     when 1 then player_move()
     when 2 then return @saq = true
-    when 3 then return 8
-    when 4 then return 8
+    when 3 then return @reset = true
+    when 4 then return @quit = true
     end
   end
 
@@ -49,7 +51,7 @@ class Player
   def self.from_json(save)
     save_file = File.read(save)
     data = JSON.parse(save_file)
-    self.new( data['score'])
+    self.new(data['score'])
   end
 
 end

@@ -15,7 +15,6 @@ class Board
    computer_moves_arr = [],
    player_moves_arr = []
   )
-   #@board = nil
     @player_moves_arr = player_moves_arr
     @computer_moves_arr = computer_moves_arr
     @winner = winner
@@ -33,7 +32,6 @@ class Board
 
   def drop_chip(drop_spot, chip)
     if drop_spot == 8 #only possible by choosing to quick in the player start menu
-      @winner = true
       return @complete_move = true
     end
     x = ((drop_spot*4)-2) #converts column number (1-7) to array position
@@ -48,7 +46,6 @@ class Board
         #puts "complete_move is true!"
         @complete_move = true
         return @complete_move
-        puts "you shouldn\'t see me"
       end
     end
     @complete_move = false
@@ -74,16 +71,6 @@ class Board
     save_file = File.read(save)
     data = JSON.parse(save_file)
     self.new(data['r0'], data['r1'], data['r2'], data['r3'], data['r4'], data['r5'], data['r6'], data['winner'], data['computer_moves_arr'], data['player_moves_arr'])
-    # @r0 = 
-    # #@r1 = data['r1']
-    # @r2 = data['r2']
-    # @r3 = 
-    # @r4 = data['r4']
-    # @r5 = data['r5']
-    # @r6 = data['r6']
-    # #@winner = data['winner']
-    # @player_moves_arr = data['player_moves_arr']
-    # @computer_moves_arr = data['computer_moves_arr']
   end
 
   def check_for_win(arr)
@@ -91,6 +78,24 @@ class Board
     #puts "#{arr} is WINNER" #for debugging
     return @winner = true 
    end
+    return false
+  end
+
+  def check_for_draw()
+    top_spot_count = 0
+
+    7.times do |x|
+      drop_spot = ((x*4)-2)
+      if r6[drop_spot] != "_"
+        top_spot_count += 1
+      else puts "it\'s empty!"
+      end
+    end
+    if top_spot_count > 6
+      puts "It\'s a draw"
+      return true
+    else return false
+    end
   end
 
   def play_again(player, computer)

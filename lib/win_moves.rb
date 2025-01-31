@@ -27,7 +27,7 @@ module Win_moves
     #count = 0
     #pyv = 0 #previous y value
     arr_of_arr.each do |x_axis|
-      puts "x_axis is #{x_axis}"
+      #puts "x_axis is #{x_axis}" #for debugging
 
       case x_axis
       in [1,2,3,4,*] | [*,2,3,4,5,*] | [*,3,4,5,6] 
