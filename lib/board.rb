@@ -85,6 +85,7 @@ class Board
     top_spot_count = 0
 
     7.times do |x|
+      x += 1
       drop_spot = ((x*4)-2)
       if r6[drop_spot] != "_"
         top_spot_count += 1

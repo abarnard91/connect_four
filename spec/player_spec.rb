@@ -6,7 +6,6 @@ describe Player do
     xit "Received player input and runs the drop_chip method from Board class" do
       board = Board.new
       player = Player.new
-      board.empty_board
       
       board.drop_chip(player.player_move, player.chip)
       def num_to_spot(num)
