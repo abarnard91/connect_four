@@ -31,3 +31,11 @@ to do:
 - make computer class
     - create a method that randomly chooses where to place disc -DONE
     - create method that increases win count upon winning -DONE
+    - create a more intelligent AI opponant move system
+        - assign values to moves:
+            moves that increase a chain horizontally, vertially, or diagonally by:
+                - 1 equals 1 point
+                - 2 equals 2 points
+                - 3 equals 3 points
+                - all other moves equals 0 points (possibly change to make it block player later)
+        - try to implement minimax algorithm 

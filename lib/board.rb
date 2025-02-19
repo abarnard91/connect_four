@@ -89,7 +89,7 @@ class Board
       drop_spot = ((x*4)-2)
       if r6[drop_spot] != "_"
         top_spot_count += 1
-      else puts "it\'s empty!"
+      else #puts "it\'s empty!"
       end
     end
     if top_spot_count > 6

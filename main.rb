@@ -74,7 +74,9 @@ while game_loop
     if player.reset == true
       game_board = Board.new
       game_board.complete_move = false
+      player.reset = false
       game_board.drop_chip(player.player_move, player.chip)
+      
     end
 
     if player.quit == true
@@ -82,7 +84,7 @@ while game_loop
       break
     end
 
-    puts "player check for win"
+    #puts "player check for win"
     game_board.check_for_win(game_board.player_moves_arr)
     draw_game = game_board.check_for_draw
     if draw_game 
@@ -105,11 +107,11 @@ while game_loop
 
   game_board.complete_move = false
   while game_board.complete_move == false
-    game_board.drop_chip(computer.computer_move, computer.chip)
+    game_board.drop_chip(computer.complex_computer_move(game_board.board,game_board.computer_moves_arr), computer.chip)
    # puts game_board.complete_move
   end
   puts game_board.board
-  puts "computer check for win"
+  #puts "computer check for win"
   game_board.check_for_win(game_board.computer_moves_arr)
   draw_game = game_board.check_for_draw
     if draw_game 

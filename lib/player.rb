@@ -19,7 +19,7 @@ class Player
       #puts "move is #{move} "
       unless move == "start"
         move = move.to_i
-        puts "move is an integer #{move.is_a?(Integer)} #{move}"
+        #puts "move is an integer #{move.is_a?(Integer)} #{move}"
         #return move
       end
     end
