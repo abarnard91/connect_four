@@ -140,9 +140,9 @@ class Computer
         end
       end
       if count >= 3
-        puts "up"
+        #puts "up"
         if board[-(last_coor[1] + 1)][(@converter.call(last_coor[0] + 1))] != "_"
-          puts "up to the right end"
+          #puts "up to the right end"
           if board[-(last_coor[1] + 2)][(@converter.call(last_coor[0] + 1))] == "_"
             return (last_coor[0] + 1)
           end
@@ -151,7 +151,7 @@ class Computer
         if board[-(last_coor[1] - 3)][(@converter.call(last_coor[0] - 3))] != "_" && last_coor[0] != 1
           
           unless board[-(last_coor[1] - 3)][(@converter.call(last_coor[0] - 3))].to_i.between?(1,7) && board[-(last_coor[1] - 2)][(@converter.call(last_coor[0] - 3))] != "_"
-           puts "up to the right front "
+           #puts "up to the right front "
             return (last_coor[0] - 3)
           end
         end
@@ -170,17 +170,17 @@ class Computer
         end
       end
       if count >= 3
-        puts "down"
+        #puts "down"
         if board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))] != "_" && last_coor[0] != 7
          
           unless board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))].to_i.between?(1,7) && board[-(last_coor[1])][(@converter.call(last_coor[0] + 1))] != "_"
-            puts "down to the right end lc is #{last_coor} #{board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))]} #{board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))].to_i.between?(1,7)}"
+            #puts "down to the right end lc is #{last_coor} #{board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))]} #{board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))].to_i.between?(1,7)}"
             return (last_coor[0] + 1)
           end
         end
 
         if board[-(last_coor[1] + 3)][(@converter.call(last_coor[0] - 3))] != "_"
-          puts "down to the right front #{board[-(last_coor[1] + 3)][(@converter.call(last_coor[0] - 3))]}"
+          #puts "down to the right front #{board[-(last_coor[1] + 3)][(@converter.call(last_coor[0] - 3))]}"
           if board[-(last_coor[1] + 4)][(@converter.call(last_coor[0] - 3))] == "_"
             return (last_coor[0] - 3)
           end
