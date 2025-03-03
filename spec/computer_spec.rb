@@ -216,7 +216,25 @@ describe Computer do
       
        expect(computer.d_player_block(board.player_moves_arr, board.board)).to eql("no match")
    
-
+       board = Board.new
+       
+       board.drop_chip(7, player.chip)
+       board.drop_chip(6, computer.chip)
+       board.drop_chip(6, player.chip)
+       board.drop_chip(5, computer.chip)
+       board.drop_chip(4, player.chip)
+       board.drop_chip(5, computer.chip)
+       board.drop_chip(5, player.chip)
+       board.drop_chip(4, computer.chip)
+       board.drop_chip(4, player.chip)
+       board.drop_chip(3, computer.chip)
+       
+       
+ 
+        puts "test 7"
+        puts board.board
+       
+        expect(computer.d_player_block(board.player_moves_arr, board.board)).to eql(4)
 
     end
   end

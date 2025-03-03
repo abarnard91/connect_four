@@ -140,15 +140,18 @@ class Computer
         end
       end
       if count >= 3
-      
+        puts "up"
         if board[-(last_coor[1] + 1)][(@converter.call(last_coor[0] + 1))] != "_"
-          puts "up end #{last_coor} #{board[-(last_coor[1] + 1)][(@converter.call(last_coor[0] + 1))]}"
-          return (last_coor[0] + 1)
+          puts "up to the right end"
+          if board[-(last_coor[1] + 2)][(@converter.call(last_coor[0] + 1))] == "_"
+            return (last_coor[0] + 1)
+          end
+        end
 
-        elsif board[-(last_coor[1] - 3)][(@converter.call(last_coor[0] - 3))] != "_" 
+        if board[-(last_coor[1] - 3)][(@converter.call(last_coor[0] - 3))] != "_" && last_coor[0] != 1
           
           unless board[-(last_coor[1] - 3)][(@converter.call(last_coor[0] - 3))].to_i.between?(1,7) && board[-(last_coor[1] - 2)][(@converter.call(last_coor[0] - 3))] != "_"
-           
+           puts "up to the right front "
             return (last_coor[0] - 3)
           end
         end
@@ -167,15 +170,20 @@ class Computer
         end
       end
       if count >= 3
-        puts "going down last_coor is #{last_coor}"
-        if board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))] != "_" 
+        puts "down"
+        if board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))] != "_" && last_coor[0] != 7
          
           unless board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))].to_i.between?(1,7) && board[-(last_coor[1])][(@converter.call(last_coor[0] + 1))] != "_"
+            puts "down to the right end lc is #{last_coor} #{board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))]} #{board[-(last_coor[1] - 1)][(@converter.call(last_coor[0] + 1))].to_i.between?(1,7)}"
             return (last_coor[0] + 1)
           end
+        end
 
-        elsif board[-(last_coor[1] + 3)][(@converter.call(last_coor[0] - 3))] != "_"
-          return (last_coor[0] - 3)
+        if board[-(last_coor[1] + 3)][(@converter.call(last_coor[0] - 3))] != "_"
+          puts "down to the right front #{board[-(last_coor[1] + 3)][(@converter.call(last_coor[0] - 3))]}"
+          if board[-(last_coor[1] + 4)][(@converter.call(last_coor[0] - 3))] == "_"
+            return (last_coor[0] - 3)
+          end
         end
       end
     end
@@ -189,56 +197,58 @@ class Computer
       x = coor[0]
       y = coor[1]
       
-      puts "coor is #{coor}"
       if y < 7
         if y > 1
           if board[-y][@converter.call((x + 1))] == "_" && board[-(y - 1)][@converter.call((x + 1))] != "_"
             if x < 7
-              5.times{move_options << (x + 1)}
+              7.times{move_options << (x + 1)}
             end
           end
 
           if board[-y][@converter.call((x - 1))] == "_" && board[-(y - 1)][@converter.call((x - 1))] != "_"
             if x > 1
-              5.times{move_options << (x - 1)}    
+              7.times{move_options << (x - 1)}    
             end        
           end
         end
         if x < 7
           if board[-(y + 1)][@converter.call((x + 1))] == "_"
-            5.times{move_options << (x + 1)}
+            7.times{move_options << (x + 1)}
 
           elsif board[-(y + 2)][@converter.call((x + 1))] == "_"
-            5.times{move_options << (x + 1)}
+            7.times{move_options << (x + 1)}
           end
         end
 
         if x > 1
           if board[-(y + 1)][@converter.call((x - 1))] == "_"
-            5.times{move_options << (x - 1)}
+            7.times{move_options << (x - 1)}
 
           elsif board[-(y + 2)][@converter.call((x - 1))] == "_"
-            5.times{move_options << (x - 1)}
+            7.times{move_options << (x - 1)}
           end
         end
 
         if board[-(y + 2)][@converter.call((x))] == "_"
-          5.times{move_options << (x)}
+          7.times{move_options << (x)}
         end
       end
 
     end
 
     if v_player_block(player_arr, board).is_a?(Integer)
-      35.times{move_options << v_player_block(player_arr, board)}
+      move_options = []
+      100.times{move_options << v_player_block(player_arr, board)}
     end
     if h_player_block(player_arr, board).is_a?(Integer)
-      35.times{move_options << h_player_block(player_arr, board)}
+      move_options = []
+      100.times{move_options << h_player_block(player_arr, board)}
     end
     if d_player_block(player_arr, board).is_a?(Integer)
-      35.times{move_options << d_player_block(player_arr, board)}
+      move_options = []
+      100.times{move_options << d_player_block(player_arr, board)}
     end
-    
+    puts "#{move_options} #{move_options.length}"
     return move_options.sample
   end
 
