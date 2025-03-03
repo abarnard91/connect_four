@@ -107,7 +107,7 @@ while game_loop
 
   game_board.complete_move = false
   while game_board.complete_move == false
-    game_board.drop_chip(computer.complex_computer_move(game_board.board,game_board.computer_moves_arr), computer.chip)
+    game_board.drop_chip(computer.complex_computer_move(game_board.board,game_board.computer_moves_arr, game_board.player_moves_arr), computer.chip)
    # puts game_board.complete_move
   end
   puts game_board.board

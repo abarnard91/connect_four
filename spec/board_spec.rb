@@ -129,8 +129,10 @@ describe Board do
       game_board.drop_chip(4, computer.chip)
       game_board.drop_chip(3, player.chip)
       game_board.drop_chip(2, computer.chip)
+      puts game_board.board
 
       expect(game_board.diagonal_win(game_board.player_moves_arr)).to eql(false)
+      #game_board = Board.new
 
       game_board.drop_chip(7, computer.chip)
       game_board.drop_chip(5, player.chip)
@@ -145,6 +147,7 @@ describe Board do
       game_board.drop_chip(5, player.chip)
       game_board.drop_chip(3, computer.chip)
       game_board.drop_chip(5, player.chip)
+      puts game_board.board
 
       expect(game_board.diagonal_win(game_board.player_moves_arr)).to eql(true)
 
