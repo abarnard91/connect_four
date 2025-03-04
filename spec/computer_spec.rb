@@ -110,6 +110,7 @@ describe Computer do
       board.drop_chip(5, player.chip)
       board.drop_chip(5, computer.chip)
       board.drop_chip(5, player.chip)
+     # board.drop_chip(5, computer.chip)
 
       puts "test 1"
       puts board.board
@@ -129,6 +130,7 @@ describe Computer do
       board.drop_chip(2, player.chip)
       board.drop_chip(3, computer.chip)
       board.drop_chip(2, player.chip)
+      
 
       puts "test 2"
       puts board.board
